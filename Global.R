@@ -16,7 +16,6 @@ library(rhandsontable)
 library(tidyr)
 library(shinyalert)
 library(shinyjs)
-# library(supercaliheatmapwidget)
 library(lubridate)
 library(vistime)
 library(timevis)
@@ -24,15 +23,16 @@ library(rmarkdown)
 library(digest)
 library(shinyauthr)
 library(tibble)
+library(RCurl)
+library(data.table)
+library(googlesheets4)
+#-------------------------------------------------------------------------------------------------------------------------------------------------
+#-------------------------------LOAD DATA----------------------------------------------------------------------------------------------------------                                     #
 
-###############################################################################
-#                               LOAD DATA                                     #
-###############################################################################
 
-
-data_schedule <- read.csv("./Data/schedule.csv")
-data_coverage <- read.csv("./Data/coverage.csv")
-data_requirement <- read.csv("./Data/requirement.csv")
+data_schedule <- read.csv(url("https://raw.githubusercontent.com/tesfahunboshe/Workforce-Management-App-with-Shiny/main/Data/schedule.csv"))
+data_coverage <- read.csv(url("https://raw.githubusercontent.com/tesfahunboshe/Workforce-Management-App-with-Shiny/main/Data/coverage.csv"))
+data_requirement <- read.csv(url("https://raw.githubusercontent.com/tesfahunboshe/Workforce-Management-App-with-Shiny/main/Data/requirement.csv"))
 
 
 Agent_names <- unique(data_schedule$Agent.name)
@@ -47,7 +47,8 @@ epochTime <- function() {
   as.integer(Sys.time())
 }
 
-fieldsMandatory <- c("name","email", "market","any_nowork_interval", "nowork_intervals")
+# Mandatory fields
+fieldsMandatory <- c("name","email", "market","favourite_shift", "any_nowork_interval", "nowork_intervals")
 
 labelMandatory <- function(label) {
   tagList(
@@ -56,6 +57,7 @@ labelMandatory <- function(label) {
   )
 }
 
+# mark the mandatory fields sign red
 appCSS <-
   ".mandatory_star { color: red; }
    #error { color: red; }"
@@ -71,6 +73,11 @@ loadData <- function() {
 }
 
 # admin users
-adminUsers <- c("Tesfa", "sally") 
+# adminUsers <- c("XX", "YY") 
 
+
+# google sheet link
+
+# gs4_auth_configure(api_key = "A________________5xOA")
+# SHEET_ID <- gs4_get("https://docs.google.com/")
 

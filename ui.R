@@ -28,7 +28,7 @@ dashboardPage(
                     menuItem("Coverage", icon = icon("signal"), tabName = "coverage"),
                     menuItem("Submit Preferences", icon = icon("heart"), tabName = "preferences"),
                     menuItem("Help", icon = icon("hands-helping"), tabName = "help"),
-                    menuItem("Download Schedule", tabName = "download_schedule", icon = icon("download")
+                    menuItem("Team Schedule", tabName = "download_schedule", icon = icon("download")
                              # , 
                              # radioButtons('format', 'Document format', c('PDF', 'Word'),inline = FALSE, selected = 1),
                              # downloadButton("report", "Download", class = "butt"),
@@ -224,8 +224,8 @@ dashboardPage(
                   textInput("email", labelMandatory("Email Address"), ""),
                   selectInput("market", "Which Market do you primarily support?",
                               c("DK",  "NO/UK", "SE", "DE/CH","PL","ES","IT","BENE","FR","FI","Other")),
-                  textInput("favourite_shift", labelMandatory("Favourite Shift")),
-                  checkboxInput("used_shiny", "I've intervals I can not work", FALSE),
+                  textInput("favourite_shift", labelMandatory("Favourite Shift (Please use this format: 17:00-22:00)")),
+                  checkboxInput("any_nowork_interval", "I've intervals I can not work", FALSE),
                   textInput("nowork_intervals", labelMandatory("Please list if any"), ""),
                   actionButton("submit", "Submit", class = "btn-primary")
                  )

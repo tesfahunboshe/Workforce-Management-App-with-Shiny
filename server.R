@@ -361,339 +361,339 @@ shinyServer(function(input, output, session){
 
   })
 
-  # # plots phone
-  #
-  # output$day_1_2 <- renderPlotly({
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,2],
-  #                  shape = "Scheduled"),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,2],
-  #                                       shape = "Forecasted"),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     labs(x="Time",y = "FTE")+
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #   # + lims(y = c(0, 60))
-  #
-  # })
-  # output$day_2_2 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,3]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,3]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_3_2 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,4]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,4]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_4_2 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,5]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,5]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_5_2 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,6]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,6]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_6_2 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,7]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,7]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_7_2 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,8]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,8]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  #
-  # # plots Email
-  #
-  # output$day_1_3 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,7+2],
-  #                  shape = "Scheduled"),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,7+2],
-  #                                       shape = "Forecasted"),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     labs(x="Time",y = "FTE")+
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #   # + lims(y = c(0, 60))
-  #
-  # })
-  # output$day_2_3 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,7+3]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,7+3]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_3_3 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,7+4]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,7+4]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_4_3 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,7+5]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,7+5]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_5_3 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,7+6]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,7+6]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_6_3 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,7+7]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,7+7]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_7_3 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,7+8]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,7+8]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  #
-  # # plots Chat
-  #
-  # output$day_1_4 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,14+2],
-  #                  shape = "Scheduled"),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,14+2],
-  #                                       shape = "Forecasted"),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     labs(x="Time",y = "FTE")+
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #   # + lims(y = c(0, 60))
-  #
-  # })
-  # output$day_2_4 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,14+3]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,14+3]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_3_4 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,14+4]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,14+4]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_4_4 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,14+5]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,14+5]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_5_4 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,14+6]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,14+6]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_6_4 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,14+7]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,14+7]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  # output$day_7_4 <- renderPlotly({
-  #
-  #   ggplot(data = f_data_cov()) +
-  #     geom_col(aes(x = factor(Interval),
-  #                  y = f_data_cov()[,14+8]),color = "#333333", fill = "#62c76b", width = 0.7)+
-  #     # geom_bar(stat = "identity") +
-  #     geom_line(data = f_data_req(),aes(x = Interval,
-  #                                       y = f_data_req()[,14+8]),
-  #               size = 2, color = "darkred")+
-  #     scale_fill_hue() +
-  #     
-  #     theme_bw() +
-  #     theme(legend.justification = "top")
-  #
-  # })
-  #
-  #
+  # plots phone
+
+  output$day_1_2 <- renderPlotly({
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,2],
+                   shape = "Scheduled"),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,2],
+                                        shape = "Forecasted"),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+      labs(x="Time",y = "FTE")+
+      theme_bw() +
+      theme(legend.justification = "top")
+    # + lims(y = c(0, 60))
+
+  })
+  output$day_2_2 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,3]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,3]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_3_2 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,4]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,4]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_4_2 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,5]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,5]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_5_2 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,6]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,6]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_6_2 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,7]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,7]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_7_2 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,8]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,8]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+
+  # plots Email
+
+  output$day_1_3 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,7+2],
+                   shape = "Scheduled"),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,7+2],
+                                        shape = "Forecasted"),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+      labs(x="Time",y = "FTE")+
+      theme_bw() +
+      theme(legend.justification = "top")
+    # + lims(y = c(0, 60))
+
+  })
+  output$day_2_3 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,7+3]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,7+3]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_3_3 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,7+4]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,7+4]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_4_3 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,7+5]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,7+5]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_5_3 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,7+6]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,7+6]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_6_3 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,7+7]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,7+7]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_7_3 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,7+8]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,7+8]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+
+  # plots Chat
+
+  output$day_1_4 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,14+2],
+                   shape = "Scheduled"),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,14+2],
+                                        shape = "Forecasted"),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+      labs(x="Time",y = "FTE")+
+      theme_bw() +
+      theme(legend.justification = "top")
+    # + lims(y = c(0, 60))
+
+  })
+  output$day_2_4 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,14+3]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,14+3]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_3_4 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,14+4]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,14+4]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_4_4 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,14+5]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,14+5]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_5_4 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,14+6]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,14+6]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_6_4 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,14+7]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,14+7]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+  output$day_7_4 <- renderPlotly({
+
+    ggplot(data = f_data_cov()) +
+      geom_col(aes(x = factor(Interval),
+                   y = f_data_cov()[,14+8]),color = "#333333", fill = "#62c76b", width = 0.7)+
+      # geom_bar(stat = "identity") +
+      geom_line(data = f_data_req(),aes(x = Interval,
+                                        y = f_data_req()[,14+8]),
+                size = 2, color = "darkred")+
+      scale_fill_hue() +
+
+      theme_bw() +
+      theme(legend.justification = "top")
+
+  })
+
+
   
 
  ##---------------------------------------------------------------------------------------------------------------------------------------------------
@@ -728,6 +728,10 @@ shinyServer(function(input, output, session){
     
     write.csv(x = data, file = file.path(responsesDir, fileName),
               row.names = FALSE, quote = TRUE)
+    
+    # entry <- data %>% as.list() %>% data.frame()
+    # sheet_append(SHEET_ID, entry)
+    
   }
   
   # action to take when submit button is pressed
@@ -779,7 +783,7 @@ shinyServer(function(input, output, session){
  
   output$downloadBtn <- downloadHandler(
     filename = function() { 
-      sprintf("mimic-google-form_%s.csv", humanTime())
+      sprintf("responses-form_%s.csv", humanTime())
     },
     content = function(file) {
       write.csv(loadData(), file, row.names = FALSE)
@@ -790,20 +794,20 @@ shinyServer(function(input, output, session){
     if (!isAdmin()) return()
     
     wellPanel(
-      h2("Previous responses (only visible to admins)"),
+      h2("Previous responses"),
       downloadButton("downloadBtn", "Download responses"), br(), br(),
       DT::dataTableOutput("responsesTable")
     )
   }) 
   
   # check if admin
-  isAdmin <- reactive({
-    !is.null(session$user) && session$user %in% adminUsers
-  })
-  
   # isAdmin <- reactive({
-  #   is.null(session$user) || session$user %in% adminUsers
-  # })  
+  #   !is.null(session$user) && session$user %in% adminUsers
+  # })
+  
+  isAdmin <- reactive({
+    is.null(session$user) || session$user %in% adminUsers
+  })
    
  ##---------------------------------------------------------------------------------------------------------------------------------------------------
        
@@ -852,7 +856,7 @@ shinyServer(function(input, output, session){
                    
                    owd <- setwd(tempdir())
                    on.exit(setwd(owd))
-                   saveRDS(finalDF, file=file.path(owd, sprintf("%s.rds", "YourSchedule")))
+                   write.csv(finalDF, file=file.path(owd, sprintf("%s.csv", "YourSchedule")),row.names = FALSE, quote = TRUE)
                  })
     
     
