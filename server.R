@@ -270,7 +270,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,3]+f_data_req()[,7+3]+f_data_req()[,14+3]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -287,7 +287,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,4]+f_data_req()[,7+4]+f_data_req()[,14+4]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -304,7 +304,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,5]+f_data_req()[,7+5]+f_data_req()[,14+5]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -320,7 +320,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,6]+f_data_req()[,7+6]+f_data_req()[,14+6]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -337,7 +337,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7]+f_data_req()[,7+7]+f_data_req()[,14+7]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -354,7 +354,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,8]+f_data_req()[,7+8]+f_data_req()[,14+8]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -390,7 +390,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,3]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -405,7 +405,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,4]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -420,7 +420,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,5]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -435,7 +435,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,6]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -450,7 +450,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -465,7 +465,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,8]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -501,7 +501,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+3]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -516,7 +516,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+4]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -531,7 +531,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+5]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -546,7 +546,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+6]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -561,7 +561,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+7]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -576,7 +576,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+8]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -612,7 +612,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+3]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -627,7 +627,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+4]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -642,7 +642,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+5]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -657,7 +657,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+6]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -672,7 +672,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+7]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -687,7 +687,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+8]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-
+      labs(x="Time",y = "FTE")+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -845,22 +845,32 @@ shinyServer(function(input, output, session){
   # write.csv(f_data_sch2(), file = "YourSchedule.csv")
 
 #   ## Save
-  observeEvent(input$save, {
-    finalDF <- isolate(values[["DF"]])
-    withProgress(message = 'Download in progress',
-                 detail = 'This may take a while...', value = 0, {
-                   for (i in 1:50) {
-                     incProgress(1/50)
-                     Sys.sleep(0.01)
-                   }
-                   
-                   owd <- setwd(tempdir())
-                   on.exit(setwd(owd))
-                   write.csv(finalDF, file=file.path(owd, sprintf("%s.csv", "YourSchedule")),row.names = FALSE, quote = TRUE)
-                 })
+  # observeEvent(input$save, {
+  #   finalDF <- isolate(values[["DF"]])
+  #   withProgress(message = 'Download in progress',
+  #                detail = 'This may take a while...', value = 0, {
+  #                  for (i in 1:50) {
+  #                    incProgress(1/50)
+  #                    Sys.sleep(0.01)
+  #                  }
+  #                  
+  #                  owd <- setwd(tempdir())
+  #                  on.exit(setwd(owd))
+  #                  write.csv(finalDF, file=file.path(owd, sprintf("%s.csv", "YourSchedule")),row.names = FALSE, quote = TRUE)
+  #                })
+  #   
+  #      })
+  
+  finalDF <- isolate(values[["DF"]])
+  output$downloadBtn2 <- downloadHandler(
     
-    
-  })
+    filename = function() { 
+      sprintf("team_schedule_%s.csv", humanTime())
+    },
+    content = function(file) {
+      write.csv(finalDF, file, row.names = FALSE)
+    }
+  )
 
   
       

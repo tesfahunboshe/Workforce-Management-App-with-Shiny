@@ -258,11 +258,12 @@ dashboardPage(
          fluidPage(sidebarLayout(
                       sidebarPanel(    
                               wellPanel(
-                                  h2("Filters"),
+                                  h2("Filter by market"),
                                   selectInput("Market3", "Market", market_names, selected = "Global"),
-                                  selectInput("Month2", "Month", c(1:12), selected = 1),  
-                                  h3("Save"), 
-                                  actionButton("save", "Save table")
+                                  # selectInput("Month2", "Month", c(1:12), selected = 1),  
+                                  # h3("Save"), 
+                                  # actionButton("save", "Save table")
+                                  downloadButton("downloadBtn2", "Download schedule")
                                      )        
                
                              ),
