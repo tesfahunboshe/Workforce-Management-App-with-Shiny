@@ -11,3 +11,5 @@ Submit Preferences --> The advocates can use this page to submit the availabilit
 Help --> Under development
 
 Download Schedule --> Download your teams's schedule for the current month
+
+The app is available at: https://tesfahunboshe.shinyapps.io/Workforce-Management-App-with-Shiny/ 
