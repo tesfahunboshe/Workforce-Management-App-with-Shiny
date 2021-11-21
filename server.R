@@ -75,8 +75,16 @@ shinyServer(function(input, output, session){
 
   })
   
+  # start date
+  StartDate <- reactive(
+    {
+      as.Date(input$startdate)
+      
+    }
+  )
+  
   f_data_cov <- reactive({  # formula for data
-    date_start <-length(seq(as.Date("2021/01/01"),as.Date(input$startdate),by = "day"))-1
+    date_start <-length(seq(as.Date("2021/01/01"),as.Date(input$startdate),by = "day"))+2
     Phone_start <- date_start
     Phone_end <- date_start+6
     Email_start <- date_start + 365
@@ -89,7 +97,7 @@ shinyServer(function(input, output, session){
   })
 
   f_data_req <- reactive({  # formula for data
-    date_start <-length(seq(as.Date("2021/01/01"),as.Date(input$startdate),by = "day"))
+    date_start <-length(seq(as.Date("2021/01/01"),as.Date(input$startdate),by = "day"))+2
     Phone_start <- date_start
     Phone_end <- date_start+6
     Email_start <- date_start + 365
@@ -253,7 +261,7 @@ shinyServer(function(input, output, session){
                                         shape = "Forecast"),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate() )+
       theme_bw() +
       theme(legend.justification = "top")
       # + lims(y = c(0, 60))
@@ -270,7 +278,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,3]+f_data_req()[,7+3]+f_data_req()[,14+3]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+1 )+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -287,7 +295,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,4]+f_data_req()[,7+4]+f_data_req()[,14+4]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+2 )+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -304,7 +312,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,5]+f_data_req()[,7+5]+f_data_req()[,14+5]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+3 )+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -320,7 +328,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,6]+f_data_req()[,7+6]+f_data_req()[,14+6]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+4 )+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -337,7 +345,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7]+f_data_req()[,7+7]+f_data_req()[,14+7]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+5 )+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -354,7 +362,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,8]+f_data_req()[,7+8]+f_data_req()[,14+8]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+6 )+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -374,7 +382,7 @@ shinyServer(function(input, output, session){
                                         shape = "Forecasted"),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate() )+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -390,7 +398,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,3]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+1 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -405,7 +413,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,4]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+2 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -420,7 +428,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,5]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+3 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -435,7 +443,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,6]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+4 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -450,7 +458,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+5 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -465,7 +473,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,8]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+6 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -485,7 +493,7 @@ shinyServer(function(input, output, session){
                                         shape = "Forecasted"),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate() )+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -501,7 +509,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+3]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+1 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -516,7 +524,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+4]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+2 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -531,7 +539,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+5]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+3 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -546,7 +554,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+6]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+4 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -561,7 +569,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+7]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+5 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -576,7 +584,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,7+8]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+6 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -596,7 +604,7 @@ shinyServer(function(input, output, session){
                                         shape = "Forecasted"),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate() )+
       theme_bw() +
       theme(legend.justification = "top")
     # + lims(y = c(0, 60))
@@ -612,7 +620,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+3]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+1 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -627,7 +635,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+4]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+2 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -642,7 +650,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+5]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+3 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -657,7 +665,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+6]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+4 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -672,7 +680,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+7]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+5 )+
       theme_bw() +
       theme(legend.justification = "top")
 
@@ -687,7 +695,7 @@ shinyServer(function(input, output, session){
                                         y = f_data_req()[,14+8]),
                 size = 2, color = "darkred")+
       scale_fill_hue() +
-      labs(x="Time",y = "FTE")+
+      labs(x="Time",y = "FTE",title =StartDate()+6 )+
       theme_bw() +
       theme(legend.justification = "top")
 
