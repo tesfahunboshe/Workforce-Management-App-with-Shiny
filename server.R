@@ -244,7 +244,7 @@ shinyServer(function(input, output, session){
   output$day_1_1 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,2]+f_data_cov()[,7+2]+f_data_cov()[,14+2],
                    shape = "Scheduled"),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
@@ -263,7 +263,7 @@ shinyServer(function(input, output, session){
   output$day_2_1 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,3]+f_data_cov()[,7+3]+f_data_cov()[,14+3]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -280,7 +280,7 @@ shinyServer(function(input, output, session){
 
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,4]+f_data_cov()[,7+4]+f_data_cov()[,14+4]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -297,7 +297,7 @@ shinyServer(function(input, output, session){
 
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,5]+f_data_cov()[,7+5]+f_data_cov()[,14+5]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -313,7 +313,7 @@ shinyServer(function(input, output, session){
 
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,6]+f_data_cov()[,7+6]+f_data_cov()[,14+6]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -330,7 +330,7 @@ shinyServer(function(input, output, session){
 
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,7]+f_data_cov()[,7+7]+f_data_cov()[,14+7]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -347,7 +347,7 @@ shinyServer(function(input, output, session){
 
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,8]+f_data_cov()[,7+8]+f_data_cov()[,14+8]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -365,7 +365,7 @@ shinyServer(function(input, output, session){
 
   output$day_1_2 <- renderPlotly({
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,2],
                    shape = "Scheduled"),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
@@ -383,7 +383,7 @@ shinyServer(function(input, output, session){
   output$day_2_2 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,3]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -398,7 +398,7 @@ shinyServer(function(input, output, session){
   output$day_3_2 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,4]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -413,7 +413,7 @@ shinyServer(function(input, output, session){
   output$day_4_2 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,5]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -428,7 +428,7 @@ shinyServer(function(input, output, session){
   output$day_5_2 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,6]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -443,7 +443,7 @@ shinyServer(function(input, output, session){
   output$day_6_2 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,7]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -458,7 +458,7 @@ shinyServer(function(input, output, session){
   output$day_7_2 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,8]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -476,7 +476,7 @@ shinyServer(function(input, output, session){
   output$day_1_3 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,7+2],
                    shape = "Scheduled"),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
@@ -494,7 +494,7 @@ shinyServer(function(input, output, session){
   output$day_2_3 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,7+3]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -509,7 +509,7 @@ shinyServer(function(input, output, session){
   output$day_3_3 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,7+4]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -524,7 +524,7 @@ shinyServer(function(input, output, session){
   output$day_4_3 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,7+5]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -539,7 +539,7 @@ shinyServer(function(input, output, session){
   output$day_5_3 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,7+6]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -554,7 +554,7 @@ shinyServer(function(input, output, session){
   output$day_6_3 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,7+7]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -569,7 +569,7 @@ shinyServer(function(input, output, session){
   output$day_7_3 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,7+8]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -587,7 +587,7 @@ shinyServer(function(input, output, session){
   output$day_1_4 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,14+2],
                    shape = "Scheduled"),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
@@ -605,7 +605,7 @@ shinyServer(function(input, output, session){
   output$day_2_4 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,14+3]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -620,7 +620,7 @@ shinyServer(function(input, output, session){
   output$day_3_4 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,14+4]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -635,7 +635,7 @@ shinyServer(function(input, output, session){
   output$day_4_4 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,14+5]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -650,7 +650,7 @@ shinyServer(function(input, output, session){
   output$day_5_4 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,14+6]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -665,7 +665,7 @@ shinyServer(function(input, output, session){
   output$day_6_4 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,14+7]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
@@ -680,7 +680,7 @@ shinyServer(function(input, output, session){
   output$day_7_4 <- renderPlotly({
 
     ggplot(data = f_data_cov()) +
-      geom_col(aes(x = factor(Interval),
+      geom_col(aes(x = Interval,
                    y = f_data_cov()[,14+8]),color = "#333333", fill = "#62c76b", width = 0.7)+
       # geom_bar(stat = "identity") +
       geom_line(data = f_data_req(),aes(x = Interval,
