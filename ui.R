@@ -109,11 +109,20 @@ dashboardPage(
         ),
   #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------      
         tabItem(tabName = "coverage",
+                fluidRow(
+                  column(6,box( 
+                                # h2("Filters"),
+                                selectInput("Market2", "Market", market_names, selected = "Global"),
+                                dateInput("startdate", "Date range:",min = as.Date("2021/01/01"), max = Sys.Date()+45), 
+                                collapsible = TRUE, width = 4, solidHeader = TRUE, status = "primary", title = "Set Filters"),),
+                  column(6,box( 
+                               # h2("Schedule Efficiency"),
+                                h2(textOutput("efficiency")),
+                                collapsible = TRUE, width = 4, solidHeader = TRUE, status = "primary", title = "Overall Schedule Efficiency"))
+                  
+                ),
                 
-                box( h2("Filters"),
-                     selectInput("Market2", "Market", market_names, selected = "Global"),
-                     dateInput("startdate", "Date range:",min = as.Date("2021/01/01"), max = Sys.Date()+45), 
-                     collapsible = TRUE, width = 4, solidHeader = TRUE, status = "primary", title = "Set Filters"),
+                
                 
                 box(tabBox(id = "tabset_projects",width = 12,
                            tabPanel("Combined", icon = icon("tasks"),textOutput("Combined"),
