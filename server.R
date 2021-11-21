@@ -78,24 +78,24 @@ shinyServer(function(input, output, session){
   f_data_cov <- reactive({  # formula for data
     date_start <-length(seq(as.Date("2021/01/01"),as.Date(input$startdate),by = "day"))-1
     Phone_start <- date_start
-    Phone_end <- date_start+7
+    Phone_end <- date_start+6
     Email_start <- date_start + 365
-    Email_end <- date_start + 365 + 7
+    Email_end <- date_start + 365 + 6
     Chat_start <- date_start + 365 + 365
-    Chat_end <- date_start + 365 + 365 +7
+    Chat_end <- date_start + 365 + 365 +6
     dt_coverage()[dt_coverage()$Market==input$Market2,][,c(1,Phone_start:Phone_end,Email_start:Email_end,Chat_start:Chat_end)]
 
 
   })
 
   f_data_req <- reactive({  # formula for data
-    date_start <-length(seq(as.Date("2021/01/01"),as.Date(input$startdate),by = "day"))-1
+    date_start <-length(seq(as.Date("2021/01/01"),as.Date(input$startdate),by = "day"))
     Phone_start <- date_start
-    Phone_end <- date_start+7
+    Phone_end <- date_start+6
     Email_start <- date_start + 365
-    Email_end <- date_start + 365 + 7
+    Email_end <- date_start + 365 + 6
     Chat_start <- date_start + 365 + 365
-    Chat_end <- date_start + 365 + 365 +7
+    Chat_end <- date_start + 365 + 365 +6
 
     dt_requirement()[dt_requirement()$Market==input$Market2,][,c(1,Phone_start:Phone_end,Email_start:Email_end,Chat_start:Chat_end)]
 
