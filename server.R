@@ -254,7 +254,8 @@ shinyServer(function(input, output, session){
   # Efficiency calculations
   output$efficiency <- renderText({ paste(round(100*ifelse(is.na(mean(colMeans(1-(abs(f_data_cov()[,-1]-f_data_req()[,-1])/f_data_req()[,-1]) ))),
                                                         0,mean(colMeans(1-(abs(f_data_cov()[,-1]-f_data_req()[,-1])/f_data_req()[,-1]) ))),
-                                          
+  # output$efficiency <- renderText({ paste(round(100*mean(colMeans(1-(abs(f_data_cov()[,-1]-f_data_req()[,-1])/f_data_req()[,-1]),na.rm=TRUE )),
+                                                
                                                1 # 1 decimal place
                                                      
                                                      ), 
