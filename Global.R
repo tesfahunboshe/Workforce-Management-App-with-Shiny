@@ -37,7 +37,7 @@ data_requirement <- read.csv(url("https://raw.githubusercontent.com/tesfahunbosh
 
 Agent_names <- unique(data_schedule$Agent.name)
 market_names <- unique(data_coverage$Market)
-
+names(data_requirement)[1] <- "Interval"
 
 # For submissions 
 
@@ -80,4 +80,3 @@ loadData <- function() {
 
 # gs4_auth_configure(api_key = "A________________5xOA")
 # SHEET_ID <- gs4_get("https://docs.google.com/")
-

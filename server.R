@@ -252,17 +252,26 @@ shinyServer(function(input, output, session){
   
   
   # Efficiency calculations
-  output$efficiency <- renderText({ paste(round(100*ifelse(is.na(mean(colMeans(1-(abs(f_data_cov()[,-1]-f_data_req()[,-1])/f_data_req()[,-1]) ))),
-                                                        0,mean(colMeans(1-(abs(f_data_cov()[,-1]-f_data_req()[,-1])/f_data_req()[,-1]) ))),
-  # output$efficiency <- renderText({ paste(round(100*mean(colMeans(1-(abs(f_data_cov()[,-1]-f_data_req()[,-1])/f_data_req()[,-1]),na.rm=TRUE )),
-                                                
-                                               1 # 1 decimal place
+  output$efficiency <- renderText({ paste(round(100*mean(colMeans(1-(abs(f_data_cov()[,-1]-f_data_req()[,-1])/f_data_req()[,-1]) ,na.rm = TRUE),na.rm = TRUE),
+  
+                                               1 ), # 1 decimal place
                                                      
-                                                     ), 
                                               '%' , sep = "")
     
-    
                                   })
+  
+  # Forecasted Hours
+  output$forecasted_hours <- renderText({ 
+                                  sum(colSums(f_data_req()[,-1]))
+    
+    
+                  })
+  
+  # Scheduled Hours
+  output$scheduled_hours <- renderText({ 
+    
+                            sum(colSums(f_data_cov()[,-1])) 
+                  })
   
   # plots combined
   output$day_1_1 <- renderPlotly({
@@ -280,7 +289,7 @@ shinyServer(function(input, output, session){
       labs(x="Time",y = "FTE",title =StartDate() )+
       theme_bw() +
       theme(legend.justification = "top")
-      # + lims(y = c(0, 60))
+      
 
 
   })
@@ -297,7 +306,7 @@ shinyServer(function(input, output, session){
       labs(x="Time",y = "FTE",title =StartDate()+1 )+
       theme_bw() +
       theme(legend.justification = "top")
-    # + lims(y = c(0, 60))
+    
 
   })
   output$day_3_1 <- renderPlotly({
@@ -314,7 +323,7 @@ shinyServer(function(input, output, session){
       labs(x="Time",y = "FTE",title =StartDate()+2 )+
       theme_bw() +
       theme(legend.justification = "top")
-    # + lims(y = c(0, 60))
+    
 
   })
   output$day_4_1 <- renderPlotly({
@@ -331,7 +340,7 @@ shinyServer(function(input, output, session){
       labs(x="Time",y = "FTE",title =StartDate()+3 )+
       theme_bw() +
       theme(legend.justification = "top")
-    # + lims(y = c(0, 60))
+    
   })
   output$day_5_1 <- renderPlotly({
 
@@ -347,7 +356,7 @@ shinyServer(function(input, output, session){
       labs(x="Time",y = "FTE",title =StartDate()+4 )+
       theme_bw() +
       theme(legend.justification = "top")
-    # + lims(y = c(0, 60))
+    
 
   })
   output$day_6_1 <- renderPlotly({
@@ -364,7 +373,7 @@ shinyServer(function(input, output, session){
       labs(x="Time",y = "FTE",title =StartDate()+5 )+
       theme_bw() +
       theme(legend.justification = "top")
-    # + lims(y = c(0, 60))
+    
 
   })
   output$day_7_1 <- renderPlotly({
@@ -381,7 +390,7 @@ shinyServer(function(input, output, session){
       labs(x="Time",y = "FTE",title =StartDate()+6 )+
       theme_bw() +
       theme(legend.justification = "top")
-    # + lims(y = c(0, 60))
+    
 
   })
 
@@ -401,7 +410,7 @@ shinyServer(function(input, output, session){
       labs(x="Time",y = "FTE",title =StartDate() )+
       theme_bw() +
       theme(legend.justification = "top")
-    # + lims(y = c(0, 60))
+    
 
   })
   output$day_2_2 <- renderPlotly({
@@ -512,7 +521,7 @@ shinyServer(function(input, output, session){
       labs(x="Time",y = "FTE",title =StartDate() )+
       theme_bw() +
       theme(legend.justification = "top")
-    # + lims(y = c(0, 60))
+    
 
   })
   output$day_2_3 <- renderPlotly({
@@ -623,7 +632,7 @@ shinyServer(function(input, output, session){
       labs(x="Time",y = "FTE",title =StartDate() )+
       theme_bw() +
       theme(legend.justification = "top")
-    # + lims(y = c(0, 60))
+    
 
   })
   output$day_2_4 <- renderPlotly({
