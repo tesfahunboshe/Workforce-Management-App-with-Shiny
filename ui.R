@@ -18,7 +18,7 @@ library(ggplot2)
 
 dashboardPage(
   dashboardHeader(dropdownMenuOutput("dropdownmenu"),
-                  title = "MIINTO WFM",dropdownMenuOutput("msgOutput")
+                  title = "My App",dropdownMenuOutput("msgOutput")
   ),
   
   
@@ -26,13 +26,8 @@ dashboardPage(
     sidebarMenu(id= "tabs", width = 350,
                 menuItem("Schedule", icon = icon("calendar"), tabName = "calendar"),
                 menuItem("Coverage", icon = icon("signal"), tabName = "coverage"),
-                menuItem("Submit Preferences", icon = icon("heart"), tabName = "preferences"),
-                menuItem("Help", icon = icon("hands-helping"), tabName = "help"),
-                menuItem("Team Schedule", tabName = "download_schedule", icon = icon("download")
-                         # , 
-                         # radioButtons('format', 'Document format', c('PDF', 'Word'),inline = FALSE, selected = 1),
-                         # downloadButton("report", "Download", class = "butt"),
-                         # tags$head(tags$style(".butt{color: blue !important;}"))
+                menuItem("Reports", icon = icon("hands-helping"), tabName = "reports"),
+                menuItem("Team Schedule", tabName = "team_schedule", icon = icon("download")
                 )
                 
                 
@@ -61,7 +56,7 @@ dashboardPage(
                 
                 box( h2("Filters"),
                      fluidRow(
-                       column(6,selectInput("Hero", "Hero", Agent_names, selected = "Agent_1")),
+                       column(6,selectInput("Hero", "Hero", Agent_names, selected = "kub_kon")),
                        column(6,selectInput("Month", "Month", c(1:12), selected = 1))
                        
                      ), 
@@ -111,9 +106,9 @@ dashboardPage(
         tabItem(tabName = "coverage",
                 fluidRow(
                   column(3,box( 
-                    # h2("Filters"),
                     selectInput("Market2", "Market", market_names, selected = "Global"),
-                    dateInput("startdate", "Start Date:",min = as.Date("2021/01/01"), max = Sys.Date()+45,value = Sys.Date()), 
+                    dateInput("startdate", "Start Date:",min = as.Date("2022/01/01"), max = as.Date("2022/12/24"),value = Sys.Date()),
+                    # dateInput("startdate", "Start Date:",min = as.Date("2022/01/01"), max = as.Date("2022/12/24"),value = as.Date("2022/01/01")), 
                     collapsible = TRUE, width = 6, solidHeader = TRUE, status = "primary", title = "Set Filters"),),
                   column(3,box(
                     h2(textOutput("efficiency")),
@@ -170,6 +165,25 @@ dashboardPage(
                                     )
                                     
                            ),
+                           tabPanel("Chat", icon = icon("tasks"),textOutput("Chat"),
+                                    
+                                    fluidRow(
+                                      column(6,plotlyOutput('day_1_4')),
+                                      column(6,plotlyOutput('day_2_4'))
+                                      
+                                    ),
+                                    fluidRow(
+                                      column(4,plotlyOutput('day_3_4')),
+                                      column(4,plotlyOutput('day_4_4')),
+                                      column(4,plotlyOutput('day_5_4'))
+                                      
+                                    ),
+                                    fluidRow(
+                                      column(6,plotlyOutput('day_6_4')),
+                                      column(6,plotlyOutput('day_7_4'))
+                                      
+                                    )
+                           ),
                            tabPanel("Email", icon = icon("tasks"),textOutput("Email"),
                                     fluidRow(
                                       column(6,plotlyOutput('day_1_3')),
@@ -189,25 +203,6 @@ dashboardPage(
                                     )
                                     
                                     
-                           ),
-                           tabPanel("Chat", icon = icon("tasks"),textOutput("Chat"),
-                                    
-                                    fluidRow(
-                                      column(6,plotlyOutput('day_1_4')),
-                                      column(6,plotlyOutput('day_2_4'))
-                                      
-                                    ),
-                                    fluidRow(
-                                      column(4,plotlyOutput('day_3_4')),
-                                      column(4,plotlyOutput('day_4_4')),
-                                      column(4,plotlyOutput('day_5_4'))
-                                      
-                                    ),
-                                    fluidRow(
-                                      column(6,plotlyOutput('day_6_4')),
-                                      column(6,plotlyOutput('day_7_4'))
-                                      
-                                    )
                            )
                 ),
                 title = "Daily Coverage",collapsible = TRUE, width = 12, solidHeader = TRUE, status = "primary")
@@ -218,64 +213,24 @@ dashboardPage(
         
         
         #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------      
-        tabItem(tabName = "help",
+        tabItem(tabName = "reports",
                 box(tags$iframe(width="560", height="315", src="https://www.youtube.com/embed/T1-k7VYwsHg", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen=NA)
                 )
                 
         ),
         
+#..................................................................................................................................................................................................................
         
-        #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-        tabItem(tabName = "preferences",
-                fluidPage(
-                  shinyjs::useShinyjs(),
-                  shinyjs::inlineCSS(appCSS),
-                  titlePanel("Please submit when ever your preferences change, your last submission will be considered"),
-                  uiOutput("adminPanelContainer"),
-                  div(
-                    id = "form",
-                    
-                    textInput("name", labelMandatory("Full Name"), ""),
-                    textInput("email", labelMandatory("Email Address"), ""),
-                    selectInput("market", "Which Market do you primarily support?",
-                                c("DK",  "NO/UK", "SE", "DE/CH","PL","ES","IT","BENE","FR","FI","Other")),
-                    textInput("favourite_shift", labelMandatory("Favourite Shift (Please use this format: 17:00-22:00)")),
-                    checkboxInput("any_nowork_interval", "I've intervals I can not work", FALSE),
-                    textInput("nowork_intervals", labelMandatory("Please list if any"), ""),
-                    actionButton("submit", "Submit", class = "btn-primary")
-                  )
-                ),
-                
-                div(id = "form",),
-                shinyjs::hidden(
-                  div(
-                    id = "thankyou_msg",
-                    h3("Thanks, your response was submitted successfully!"),
-                    actionLink("submit_another", "Submit another response")
-                  )
-                ),  
-                
-                shinyjs::hidden(
-                  span(id = "submit_msg", "Submitting..."),
-                  div(id = "error",
-                      div(br(), tags$b("Error: "), span(id = "error_msg"))
-                  )
-                )
-                
-                
-                
-        ),
-        
-        #..................................................................................................................................................................................................................
-        
-        tabItem(tabName = "download_schedule",
+        tabItem(tabName = "team_schedule",
                 
                 fluidPage(sidebarLayout(
                   sidebarPanel(    
                     wellPanel(
-                      h2("Filter by market"),
-                      selectInput("Market3", "Market", market_names, selected = "Global"),
-                      # selectInput("Month2", "Month", c(1:12), selected = 1),  
+                      h2("Filters"),
+                      selectInput("Market3", "Market", market_names2, selected = "DK"),
+                      br(),
+                      # selectInput("Month2", "Month", c(1:12), selected = 1),
+                      dateInput("dateselect2", "Date",min = as.Date("2022/01/01"), max = as.Date("2022/12/24"),value = as.Date("2022/01/01")),
                       # h3("Save"), 
                       # actionButton("save", "Save table")
                       downloadButton("downloadBtn2", "Download schedule")
@@ -285,7 +240,7 @@ dashboardPage(
                   
                   mainPanel(
                     
-                    rHandsontableOutput("hot")
+                    DT::dataTableOutput("hot")
                   )
                 )
                 )

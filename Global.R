@@ -7,6 +7,7 @@ library(shinydashboard)
 library(dplyr)
 library(leaflet)
 library(ggplot2)
+library(ggrepel)
 library(tidyverse)
 library(DT)
 library(plotly)
@@ -26,19 +27,29 @@ library(tibble)
 library(RCurl)
 library(data.table)
 library(googlesheets4)
+
 #-------------------------------------------------------------------------------------------------------------------------------------------------
 #-------------------------------LOAD DATA----------------------------------------------------------------------------------------------------------                                     #
 
 
-data_schedule <- read.csv(url("https://raw.githubusercontent.com/tesfahunboshe/Workforce-Management-App-with-Shiny/main/Data/schedule.csv"))
-data_coverage <- read.csv(url("https://raw.githubusercontent.com/tesfahunboshe/Workforce-Management-App-with-Shiny/main/Data/coverage.csv"))
-data_requirement <- read.csv(url("https://raw.githubusercontent.com/tesfahunboshe/Workforce-Management-App-with-Shiny/main/Data/requirement.csv"))
+# data_schedule <- read.csv(url("https://raw.githubusercontent.com/MiintoWFM/WFM-APP/main/Data/schedule.csv"))
+# data_coverage <- read.csv(url("https://raw.githubusercontent.com/MiintoWFM/WFM-APP/main/Data/coverage.csv"))
+# data_requirement <- read.csv(url("https://raw.githubusercontent.com/MiintoWFM/WFM-APP/main/Data/requirement.csv"))
+# data_delivered <- read.csv(url("https://raw.githubusercontent.com/MiintoWFM/WFM-APP/main/Data/delivered.csv"))
+
+data_schedule <- read.csv("C:\\Users\\Tesfahun Boshe\\Documents\\WFM\\WFM-APP-main\\Data\\schedule.csv")
+data_coverage <- read.csv("C:\\Users\\Tesfahun Boshe\\Documents\\WFM\\WFM-APP-main\\Data\\coverage.csv")
+data_requirement <- read.csv("C:\\Users\\Tesfahun Boshe\\Documents\\WFM\\WFM-APP-main\\Data\\requirement.csv")
+data_delivered <- read.csv("C:\\Users\\Tesfahun Boshe\\Documents\\WFM\\WFM-APP-main\\Data\\delivered.csv")
 
 
-Agent_names <- unique(data_schedule$Agent.name)
 market_names <- unique(data_coverage$Market)
+market_names2 <- unique(data_schedule$Market)
+names(data_schedule)[1] <- "Agent.name"
+Agent_names <- unique(data_schedule[,1])
 names(data_requirement)[1] <- "Interval"
-
+names(data_coverage)[1] <- "Interval"
+names(data_delivered)[1] <- "Interval"
 # For submissions 
 
 fieldsAll <- c("name","email", "market","favourite_shift", "any_nowork_interval", "nowork_intervals")
@@ -71,12 +82,3 @@ loadData <- function() {
   data <- do.call(rbind, data)
   data
 }
-
-# admin users
-# adminUsers <- c("XX", "YY") 
-
-
-# google sheet link
-
-# gs4_auth_configure(api_key = "A________________5xOA")
-# SHEET_ID <- gs4_get("https://docs.google.com/")
