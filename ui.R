@@ -56,7 +56,7 @@ dashboardPage(
                 
                 box( h2("Filters"),
                      fluidRow(
-                       column(6,selectInput("Agent", "Agent", Agent_names, selected = 1)),
+                       column(6,selectInput("Agent", "Agent", Agent_names, selected = "Agent_1")),
                        column(6,selectInput("Month", "Month", c(1:12), selected = 1))
                        
                      ), 
