@@ -64,11 +64,10 @@ shinyServer(function(input, output, session){
   dt_schedule <- reactive({ data_schedule })
   dt_coverage <- reactive({ data_coverage })
   dt_requirement <- reactive({ data_requirement })
-  dt_delivered <- reactive({ data_delivered })
   
 
   f_data_sch <- reactive({  # formula for data
-    H <- input$Hero
+    H <- input$Agent
     # Mk <- input$Market
     Mn <- input$Month
     dt_schedule()[dt_schedule()$Agent.name==H,][ , grepl( paste0("X",Mn,"_") , names( dt_schedule() ) ) ]
@@ -599,8 +598,6 @@ shinyServer(function(input, output, session){
     
   })
   
-  
-
   # plots Email
 
   output$day_1_3 <- renderPlotly({
@@ -913,75 +910,21 @@ shinyServer(function(input, output, session){
  ##-----------------------------------------Team Schedule-----------------------------------------------------------------------------------------
 
  
-  # DF <- f_data_sch2()
-  # Mn2 <- month(as.POSIXlt(Sys.Date(), format="%d/%m/%Y"))
-  
-  
   DF <- reactive({  # formula for data
-    # H <- input$Hero
+    # H <- input$Agent
     Mk2 <- input$Market3
     Mn2 <- month(as.POSIXlt(input$dateselect2, format="%d/%m/%Y"))
-    # date <- as.Date(as.character(input$dateselect2), format="%Y/%m/%d")- as.Date(as.character("2022/01/01"), format="%Y/%m/%d")+1
-    # a = length(seq(as.Date("2022/01/01"),as.Date(input$startdate),by = "day"))
     date <- length(seq(to = as.Date(input$dateselect2), from = as.Date("2021-12-31"), by = 'day'))-1
     dt_schedule()[dt_schedule()$Market==Mk2,][ , c(TRUE,grepl( paste0("X",Mn2,"_",date,"[A-Z]") , names( dt_schedule() ) )[-1]) ]
 
 
   })
 
-  
-  # DF <- reactive({ data_schedule[ , grepl( paste0("X",input$Month2,"_") , names( data_schedule ) ) ] })
-  # DF <- data_schedule
-  
-  # values <- reactiveValues()
-
-  # Handsontable
-  # observe({
-  #  
-  #   if (!is.null(input$hot)) {
-  #     DF = hot_to_r(input$hot)
-  #   } else {1 
-  #     if (is.null(values[["DF"]]))
-  #       DF <- DF
-  #     else
-  #       DF <- values[["DF"]]
-  #   }
-  #   values[["DF"]] <- DF
-  # })
-
-
-  # output$hot <- renderRHandsontable({
-  #   DF <- values[["DF"]]
-  #   if (!is.null(DF))
-  #     rhandsontable(DF, useTypes = as.logical(FALSE), stretchH = "all")
-  # })
-  
   output$hot <- DT::renderDataTable({
     DF()
   })
 
-  # write.csv(f_data_sch2(), file = "YourSchedule.csv")
-
-#   ## Save
-  # observeEvent(input$save, {
-  #   finalDF <- isolate(values[["DF"]])
-  #   withProgress(message = 'Download in progress',
-  #                detail = 'This may take a while...', value = 0, {
-  #                  for (i in 1:50) {
-  #                    incProgress(1/50)
-  #                    Sys.sleep(0.01)
-  #                  }
-  #                  
-  #                  owd <- setwd(tempdir())
-  #                  on.exit(setwd(owd))
-  #                  write.csv(finalDF, file=file.path(owd, sprintf("%s.csv", "YourSchedule")),row.names = FALSE, quote = TRUE)
-  #                })
-  #   
-  #      })
-  
-  # finalDF <- isolate(values[["DF"]])
-  # finalDF <- 
-  output$downloadBtn2 <- downloadHandler(
+ output$downloadBtn2 <- downloadHandler(
     
     filename = function() { 
       sprintf("team_schedule_%s.csv", humanTime())
@@ -991,17 +934,123 @@ shinyServer(function(input, output, session){
     }
   )
 
-  
+
+ 
+ ##---------------------------------------------------------------------------------------------------------------------------------------------------
+ ##-----------------------------------------Submit preferences----------------------------------------------------------------------------------------
+ 
+ 
+ observe({
+   mandatoryFilled <-
+     vapply(fieldsMandatory,
+            function(x) {
+              !is.null(input[[x]]) && input[[x]] != ""
+            },
+            logical(1))
+   mandatoryFilled <- all(mandatoryFilled)
+   
+   shinyjs::toggleState(id = "submit", condition = mandatoryFilled)
+ }) 
+ 
+ formData <- reactive({
+   data <- sapply(fieldsAll, function(x) input[[x]])
+   data <- c(data, timestamp = epochTime())
+   data <- t(data)
+   data
+ })
+ 
+ 
+ # Save Data
+ saveData <- function(data) {
+   fileName <- sprintf("%s_%s.csv",
+                       humanTime(),
+                       digest::digest(data))
+   
+   write.csv(x = data, file = file.path(responsesDir, fileName),
+             row.names = FALSE, quote = TRUE)
+   
+   # entry <- data %>% as.list() %>% data.frame()
+   # sheet_append(SHEET_ID, entry)
+   
+ }
+ 
+ # action to take when submit button is pressed
+ observeEvent(input$submit, {
+   saveData(formData())
+ })
+ 
+ 
+ # action to take when submit button is pressed
+ observeEvent(input$submit, {
+   saveData(formData())
+   shinyjs::reset("form")
+   shinyjs::hide("form")
+   shinyjs::show("thankyou_msg")
+ })
+ 
+ observeEvent(input$submit_another, { #Submit another response
+   shinyjs::show("form")
+   shinyjs::hide("thankyou_msg")
+ })  
+ 
+ 
+ observeEvent(input$submit, {
+   shinyjs::disable("submit")
+   shinyjs::show("submit_msg")
+   shinyjs::hide("error")
+   
+   tryCatch({
+     saveData(formData())
+     shinyjs::reset("form")
+     shinyjs::hide("form")
+     shinyjs::show("thankyou_msg")
+   },
+   error = function(err) {
+     shinyjs::html("error_msg", err$message)
+     shinyjs::show(id = "error", anim = TRUE, animType = "fade")
+   },
+   finally = {
+     shinyjs::enable("submit")
+     shinyjs::hide("submit_msg")
+   })
+ })
+ 
+ output$responsesTable <- DT::renderDataTable(
+   loadData(),
+   rownames = FALSE,
+   options = list(searching = FALSE, lengthChange = FALSE)
+ ) 
+ 
+ output$downloadBtn <- downloadHandler(
+   filename = function() { 
+     sprintf("responses-form_%s.csv", humanTime())
+   },
+   content = function(file) {
+     write.csv(loadData(), file, row.names = FALSE)
+   }
+ )
+ 
+ output$adminPanelContainer <- renderUI({
+   if (!isAdmin()) return()
+   
+   wellPanel(
+     h2("Previous responses"),
+     downloadButton("downloadBtn", "Download responses"), br(), br(),
+     DT::dataTableOutput("responsesTable")
+   )
+ }) 
+ 
+ # check if admin
+ # isAdmin <- reactive({
+ #   !is.null(session$user) && session$user %in% adminUsers
+ # })
+ 
+ isAdmin <- reactive({
+   is.null(session$user) || session$user %in% adminUsers
+ })
+   
       
         
 })
 
 
-#------------------------------Progress calculations----------------------------------------------------------------------------------------------------------------
-# Progress 
-
-# Forecasted hours
-
-# Scheduled Hours
-
-# Delivered Hours

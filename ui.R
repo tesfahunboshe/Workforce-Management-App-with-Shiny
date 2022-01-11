@@ -18,7 +18,7 @@ library(ggplot2)
 
 dashboardPage(
   dashboardHeader(dropdownMenuOutput("dropdownmenu"),
-                  title = "My App",dropdownMenuOutput("msgOutput")
+                  title = "My WFM App",dropdownMenuOutput("msgOutput")
   ),
   
   
@@ -26,7 +26,7 @@ dashboardPage(
     sidebarMenu(id= "tabs", width = 350,
                 menuItem("Schedule", icon = icon("calendar"), tabName = "calendar"),
                 menuItem("Coverage", icon = icon("signal"), tabName = "coverage"),
-                menuItem("Reports", icon = icon("hands-helping"), tabName = "reports"),
+                menuItem("Submit Preferences", icon = icon("heart"), tabName = "preferences"),
                 menuItem("Team Schedule", tabName = "team_schedule", icon = icon("download")
                 )
                 
@@ -56,7 +56,7 @@ dashboardPage(
                 
                 box( h2("Filters"),
                      fluidRow(
-                       column(6,selectInput("Hero", "Hero", Agent_names, selected = "kub_kon")),
+                       column(6,selectInput("Agent", "Agent", Agent_names, selected = 1)),
                        column(6,selectInput("Month", "Month", c(1:12), selected = 1))
                        
                      ), 
@@ -209,16 +209,46 @@ dashboardPage(
                 
                 
         ),
-        
-        
-        
-        #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------      
-        tabItem(tabName = "reports",
-                box(tags$iframe(width="560", height="315", src="https://www.youtube.com/embed/T1-k7VYwsHg", frameborder="0", allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture", allowfullscreen=NA)
+        #------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        tabItem(tabName = "preferences",
+                fluidPage(
+                  shinyjs::useShinyjs(),
+                  shinyjs::inlineCSS(appCSS),
+                  titlePanel("Please submit when ever your preferences change, your last submission will be considered"),
+                  uiOutput("adminPanelContainer"),
+                  div(
+                    id = "form",
+                    
+                    textInput("name", labelMandatory("Full Name"), ""),
+                    textInput("email", labelMandatory("Email Address"), ""),
+                    selectInput("market", "Which Market do you primarily support?",
+                                c("DK",  "NO/UK", "SE", "DE/CH","PL","ES","IT","BENE","FR","FI","Other")),
+                    textInput("favourite_shift", labelMandatory("Favourite Shift (Please use this format: 17:00-22:00)")),
+                    checkboxInput("any_nowork_interval", "I've intervals I can not work", FALSE),
+                    textInput("nowork_intervals", labelMandatory("Please list if any"), ""),
+                    actionButton("submit", "Submit", class = "btn-primary")
+                  )
+                ),
+                
+                div(id = "form",),
+                shinyjs::hidden(
+                  div(
+                    id = "thankyou_msg",
+                    h3("Thanks, your response was submitted successfully!"),
+                    actionLink("submit_another", "Submit another response")
+                  )
+                ),  
+                
+                shinyjs::hidden(
+                  span(id = "submit_msg", "Submitting..."),
+                  div(id = "error",
+                      div(br(), tags$b("Error: "), span(id = "error_msg"))
+                  )
                 )
                 
-        ),
-        
+                
+                
+        ),     
 #..................................................................................................................................................................................................................
         
         tabItem(tabName = "team_schedule",
@@ -229,10 +259,7 @@ dashboardPage(
                       h2("Filters"),
                       selectInput("Market3", "Market", market_names2, selected = "DK"),
                       br(),
-                      # selectInput("Month2", "Month", c(1:12), selected = 1),
                       dateInput("dateselect2", "Date",min = as.Date("2022/01/01"), max = as.Date("2022/12/24"),value = as.Date("2022/01/01")),
-                      # h3("Save"), 
-                      # actionButton("save", "Save table")
                       downloadButton("downloadBtn2", "Download schedule")
                     )        
                     
