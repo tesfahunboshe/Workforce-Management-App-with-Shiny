@@ -8,8 +8,6 @@ Coverage --> View the coverage per channel and combined. The plots feature the s
 
 Submit Preferences --> The advocates can use this page to submit the availabilities. The submissions are visible to the admin user in requests folder. 
 
-Help --> Under development
-
-Download Schedule --> Download your teams's schedule for the current month
+Team Schedule --> See and download your teams's schedule for the chosen day
 
 The app is available at: https://tesfahunboshe.shinyapps.io/Workforce-Management-App-with-Shiny/ 
