@@ -10,4 +10,4 @@ Submit Preferences --> The advocates can use this page to submit the availabilit
 
 Team Schedule --> See and download your teams's schedule for the chosen day
 
-The app is available at: https://tesfahunboshe.shinyapps.io/Workforce-Management-App-with-Shiny/ 
+The app is available at: https://tesfahunboshe.shinyapps.io/CP2HP/ 
